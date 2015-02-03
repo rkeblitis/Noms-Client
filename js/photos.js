@@ -8,10 +8,13 @@ $( document ).ready(function() {
       url: "http://localhost:4000/foursquare",
       type: "GET",
       success: function (data) {
-        var randUrl = data[Math.floor(Math.random() * data.length)]
+        // This specifies the index; Math.floor means to round down
+        var randIndex = Math.floor(Math.random() * data.length)
+        var randUrl = data[randIndex]
         var element = $("<img />")
         element.attr("src", randUrl)
-          $("#pics").append(element);
+          $("#pics").html(element);
+            splice.data(randIndex, 1)
 
 
       }

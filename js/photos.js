@@ -7,22 +7,27 @@ $( document ).ready(function() {
     $.ajax ({
       url: "http://localhost:4000/foursquare",
       type: "GET",
+      dataType: "text",
       success: function (data) {
         // This specifies the index; Math.floor means to round down
-        var randIndex = Math.floor(Math.random() * data.length)
-        var randUrl = data[randIndex]
+        // var randIndex = Math.floor(Math.random() * data.length)
+        // var randUrl = data[randIndex]
         var element = $("<img />")
-        element.attr("src", randUrl)
+        element.attr("src", data)
           $("#pics").html(element);
-            splice.data(randIndex, 1)
+            // splice.data(randIndex, 1)
+      },
 
-
+      error: function () {
+        console.log("ERROR");
       }
-
     });
   })
 
 });
+
+
+
 
 
 // I have my pic displayed

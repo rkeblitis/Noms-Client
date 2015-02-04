@@ -19,7 +19,7 @@ $( document ).ready(function() {
       },
 
       error: function () {
-        console.log("ERROR");
+        console.log("ErrrROAR");
       }
     });
   })

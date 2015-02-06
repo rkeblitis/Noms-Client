@@ -1,22 +1,11 @@
 // says when html is loaded, do the folowing:
 $( document ).ready(function() {
 
-  if ("geolocation" in navigator) {
-    /* geolocation is available */
-  } else {
-    /* geolocation IS NOT available */
-  }
-
-  navigator.geolocation.getCurrentPosition(function(position) {
-    do_something(position.coords.latitude, position.coords.longitude);
-  });
-
-
   $("#picDecision").submit(function() {
     var $request = $(this)
     $.ajax ({
       url: "http://localhost:4000/foursquare",
-      type: "POST",
+      type: "GET",
       dataType: "json",
       success: function (data) {
         console.log(data);
@@ -50,6 +39,3 @@ $( document ).ready(function() {
   // })
 
 });
-
-
-// on success

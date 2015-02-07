@@ -1,26 +1,25 @@
-window.onload = function() {
-  var startPos;
+//why u mad?!?!
+$( document ).ready(function() {
   var geoSuccess = function(position) {
-    startPos = position;
-    document.getElementById('startLat').innerHTML = startPos.coords.latitude;
-    document.getElementById('startLon').innerHTML = startPos.coords.longitude;
+    var lat = position.coords.latitude;
+    var lon = position.coords.longitude;
 
-    // $.ajax(
-    //   "http://localhost:4000/foursquare", {
-    //     method: "POST",
-    //     data: {
-    //       lat: startPos.coords.latitude,
-    //       lon: startPos.coords.longitude
-    //     },
-    //     success: function(myResponse){
-    //       console.log(myResponse)
-    //       // $('#showeather').html(myResponse);
-    //     }
-    //   }
-    // );
+    console.log(position);
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:4000/foursquare",
+      data: {
+          lat: lat,
+          lon: lon
+
+      },
+      dataType: "json",
+      success: function(data) {
+        console.log(data);
+      }
+    });
   };
+
   navigator.geolocation.getCurrentPosition(geoSuccess);
 
-};
-
-$('.hide').hide();
+});

@@ -6,11 +6,15 @@ $( document ).ready(function() {
     console.log(lat);
     //  Send lat and long to noms api //
     $.ajax({
-      type: "POST",
-      url: "http://localhost:4000/foursquare",
+      type: "GET",
+      url: "http://localhost:4000/picture",
       data: {
           lat: lat,
           lon: lon
+      },
+      // tell to send cookies
+      xhrFields: {
+        withCredentials: true
       },
       dataType: "json",
       success: function(data) {
@@ -28,7 +32,7 @@ $( document ).ready(function() {
           console.log(obj)
           $.ajax({
             type: "POST",
-            url: "http://localhost:4000/pic",
+            url: "http://localhost:4000/reaction",
             data: {
               reaction: $request.context.name,
               pic_obj: obj,
@@ -38,10 +42,24 @@ $( document ).ready(function() {
             dataTyle: "json",
             success: function(data) {
               console.log(data)
-              element.attr("src", data.url);
-              $("#pics").html(element);
 
-            },
+              $.ajax({
+                type: "GET",
+                url: "http://localhost:4000/picture",
+                data: {
+                  lat: lat,
+                  lon: lon
+                },
+                datatyle: "json",
+                success: function(data) {
+                  console.log(data)
+                  element.attr("src", data.url);
+                  $("#pics").html(element);
+
+              }
+
+            });
+          },
 
             error: function() {
               console.log("ErrrROAR");
@@ -57,7 +75,7 @@ $( document ).ready(function() {
           console.log(obj)
           $.ajax({
             type: "POST",
-            url: "http://localhost:4000/pic",
+            url: "http://localhost:4000/reaction",
             data: {
               reaction: $request.context.name,
               pic_obj: obj,
@@ -87,7 +105,7 @@ $( document ).ready(function() {
           console.log(obj)
           $.ajax({
             type: "POST",
-            url: "http://localhost:4000/pic",
+            url: "http://localhost:4000/reaction",
             data: {
               reaction: $request.context.name,
               pic_obj: obj,

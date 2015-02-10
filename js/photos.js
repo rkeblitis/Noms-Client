@@ -1,8 +1,8 @@
 $( document ).ready(function() {
-  $("#picDecision").submit(function() {
-    var $request = $(this)
-    console.log($request)
-    console.log(obj)
+  // $("#picDecision").submit(function() {
+  //   var $request = $(this)
+  //   console.log($request)
+  //   console.log(obj)
 //     $.ajax ({
 //       type: "POST",
 //       url: "http://localhost:4000/foursquare",
@@ -25,6 +25,6 @@ $( document ).ready(function() {
 //     function blah () {
 //       console.log("blah");
 //     }
-   })
+
 
 });

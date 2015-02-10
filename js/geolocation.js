@@ -3,8 +3,8 @@ $( document ).ready(function() {
   var geoSuccess = function(position) {
     var lat = position.coords.latitude;
     var lon = position.coords.longitude;
-
     console.log(lat);
+    //  Send lat and long to noms api //
     $.ajax({
       type: "POST",
       url: "http://localhost:4000/foursquare",
@@ -19,6 +19,97 @@ $( document ).ready(function() {
         var element = $("<img />");
         element.attr("src", data.url);
         $("#pics").html(element);
+
+
+        // Send lat, lon, and pic info if mehButton is clicked /////////////////
+        $("#mehButton").click(function() {
+          var $request = $(this)
+          console.log($request.context.name)
+          console.log(obj)
+          $.ajax({
+            type: "POST",
+            url: "http://localhost:4000/pic",
+            data: {
+              reaction: $request.context.name,
+              pic_obj: obj,
+              lat: lat,
+              lon: lon
+            },
+            dataTyle: "json",
+            success: function(data) {
+              console.log(data)
+              element.attr("src", data.url);
+              $("#pics").html(element);
+
+            },
+
+            error: function() {
+              console.log("ErrrROAR");
+            }
+
+          });
+
+        });
+        // Send lat, lon, and pic info if flagButton is clicked ////////////////
+        $("#flagButton").click(function() {
+          var $request = $(this)
+          console.log($request.context.name)
+          console.log(obj)
+          $.ajax({
+            type: "POST",
+            url: "http://localhost:4000/pic",
+            data: {
+              reaction: $request.context.name,
+              pic_obj: obj,
+              lat: lat,
+              lon: lon
+            },
+            dataTyle: "json",
+            success: function(data) {
+              console.log(data)
+              element.attr("src", data.url);
+              $("#pics").html(element);
+
+            },
+
+            error: function() {
+              console.log("ErrrROAR");
+            }
+
+          });
+
+        });
+
+        // Send lat, lon, and pic info if hangryButton is clicked //////////////
+        $("#hangryButton").click(function() {
+          var $request = $(this)
+          console.log($request.context.name)
+          console.log(obj)
+          $.ajax({
+            type: "POST",
+            url: "http://localhost:4000/pic",
+            data: {
+              reaction: $request.context.name,
+              pic_obj: obj,
+              lat: lat,
+              lon: lon
+            },
+            dataTyle: "json",
+            success: function(data) {
+              console.log(data)
+              element.attr("src", data.url);
+              $("#pics").html(element);
+
+            },
+
+            error: function() {
+              console.log("ErrrROAR");
+            }
+
+          });
+
+        });
+
       },
 
       error: function() {
@@ -27,6 +118,9 @@ $( document ).ready(function() {
 
 
     });
+
+
+
   };
 
   navigator.geolocation.getCurrentPosition(geoSuccess);

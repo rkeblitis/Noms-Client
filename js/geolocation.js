@@ -61,10 +61,10 @@ $( document ).ready(function() {
                   console.log(data)
                   element.attr("src", data.url);
                   $("#pics").html(element);
-
               }
 
             });
+            
           },
 
             error: function() {
@@ -109,9 +109,10 @@ $( document ).ready(function() {
                   console.log(data)
                   element.attr("src", data.url);
                   $("#pics").html(element);
-
                 }
+
               });
+
             },
 
             error: function() {
@@ -176,10 +177,7 @@ $( document ).ready(function() {
         console.log("ErrrROAR");
       }
 
-
     });
-
-
 
   };
 

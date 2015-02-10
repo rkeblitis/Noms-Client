@@ -39,7 +39,10 @@ $( document ).ready(function() {
               lat: lat,
               lon: lon
             },
-            dataTyle: "json",
+            xhrFields: {
+              withCredentials: true
+            },
+            dataType: "json",
             success: function(data) {
               console.log(data)
 
@@ -50,7 +53,10 @@ $( document ).ready(function() {
                   lat: lat,
                   lon: lon
                 },
-                datatyle: "json",
+                xhrFields: {
+                  withCredentials: true
+                },
+                dataType: "json",
                 success: function(data) {
                   console.log(data)
                   element.attr("src", data.url);
@@ -82,12 +88,30 @@ $( document ).ready(function() {
               lat: lat,
               lon: lon
             },
-            dataTyle: "json",
+            xhrFields: {
+              withCredentials: true
+            },
+            dataType: "json",
             success: function(data) {
-              console.log(data)
-              element.attr("src", data.url);
-              $("#pics").html(element);
 
+              $.ajax({
+                type: "GET",
+                url: "http://localhost:4000/picture",
+                data: {
+                  lat: lat,
+                  lon: lon
+                },
+                xhrFields: {
+                  withCredentials: true
+                },
+                dataType: "json",
+                success: function(data) {
+                  console.log(data)
+                  element.attr("src", data.url);
+                  $("#pics").html(element);
+
+                }
+              });
             },
 
             error: function() {
@@ -112,11 +136,29 @@ $( document ).ready(function() {
               lat: lat,
               lon: lon
             },
-            dataTyle: "json",
+            xhrFields: {
+              withCredentials: true
+            },
+            dataType: "json",
             success: function(data) {
-              console.log(data)
-              element.attr("src", data.url);
-              $("#pics").html(element);
+              $.ajax({
+                type: "GET",
+                url: "http://localhost:4000/picture",
+                data: {
+                  lat: lat,
+                  lon: lon
+                },
+                xhrFields: {
+                  withCredentials: true
+                },
+                dataType: "json",
+                success: function(data) {
+                  console.log(data)
+                  element.attr("src", data.url);
+                  $("#pics").html(element);
+
+                }
+              });
 
             },
 

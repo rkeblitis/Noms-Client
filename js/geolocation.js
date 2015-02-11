@@ -15,7 +15,8 @@ $( document ).ready(function() {
     console.log($request.context.name)
     $.ajax({
       type: "POST",
-      url: "http://54.213.91.66/reaction",
+      url: "http://localhost:4000/reaction",
+      // http://54.213.91.66/
       data: {
         reaction: $request.context.name,
         pic_id: $("img").data("id"),
@@ -36,7 +37,8 @@ $( document ).ready(function() {
 var getPhoto = function() {
   $.ajax({
     type: "GET",
-    url: "http://54.213.91.66/picture",
+    url: "http://localhost:4000/picture",
+    // http://54.213.91.66/
     data: {
       lat: lat,
       lon: lon

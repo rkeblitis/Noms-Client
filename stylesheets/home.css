@@ -1,0 +1,11 @@
+#hangry {
+  font-family: 'Anton';
+  color: dimgrey;
+  font-size : 3em;
+  /*text-transform: none;*/
+}
+
+.hang {
+  color: tomato;
+  font-size :1.6em;
+}

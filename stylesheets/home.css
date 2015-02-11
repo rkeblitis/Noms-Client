@@ -1,3 +1,9 @@
+/*Home CSS*/
+#wrapper {
+  text-align: center
+}
+
+
 #hangry {
   font-family: 'Anton';
   color: dimgrey;

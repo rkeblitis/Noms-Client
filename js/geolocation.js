@@ -1,186 +1,60 @@
 //Get User Location
+var lat;
+var lon;
 $( document ).ready(function() {
   var geoSuccess = function(position) {
-    var lat = position.coords.latitude;
-    var lon = position.coords.longitude;
+    lat = position.coords.latitude;
+    lon = position.coords.longitude;
     console.log(lat);
-    //  Send lat and long to noms api //
+    getPhoto()
+  }
+  navigator.geolocation.getCurrentPosition(geoSuccess);
+
+  $("#picDecision button").click(function() {
+    var $request = $(this)
+    console.log($request.context.name)
     $.ajax({
-      type: "GET",
-      url: "http://localhost:4000/picture",
+      type: "POST",
+      url: "http://localhost:4000/reaction",
       data: {
-          lat: lat,
-          lon: lon
+        reaction: $request.context.name,
+        pic_id: $("img").data("id"),
+        lat: lat,
+        lon: lon
       },
-      // tell to send cookies
       xhrFields: {
         withCredentials: true
       },
       dataType: "json",
-      success: function(data) {
-        console.log(data);
-        var obj = data
-        var element = $("<img />");
-        element.attr("src", data.url);
-        $("#pics").html(element);
-
-
-        // Send lat, lon, and pic info if mehButton is clicked /////////////////
-        $("#mehButton").click(function() {
-          var $request = $(this)
-          console.log($request.context.name)
-          console.log(obj)
-          $.ajax({
-            type: "POST",
-            url: "http://localhost:4000/reaction",
-            data: {
-              reaction: $request.context.name,
-              pic_obj: obj,
-              lat: lat,
-              lon: lon
-            },
-            xhrFields: {
-              withCredentials: true
-            },
-            dataType: "json",
-            success: function(data) {
-              console.log(data)
-
-              $.ajax({
-                type: "GET",
-                url: "http://localhost:4000/picture",
-                data: {
-                  lat: lat,
-                  lon: lon
-                },
-                xhrFields: {
-                  withCredentials: true
-                },
-                dataType: "json",
-                success: function(data) {
-                  console.log(data)
-                  element.attr("src", data.url);
-                  $("#pics").html(element);
-              }
-
-            });
-            
-          },
-
-            error: function() {
-              console.log("ErrrROAR");
-            }
-
-          });
-
-        });
-        // Send lat, lon, and pic info if flagButton is clicked ////////////////
-        $("#flagButton").click(function() {
-          var $request = $(this)
-          console.log($request.context.name)
-          console.log(obj)
-          $.ajax({
-            type: "POST",
-            url: "http://localhost:4000/reaction",
-            data: {
-              reaction: $request.context.name,
-              pic_obj: obj,
-              lat: lat,
-              lon: lon
-            },
-            xhrFields: {
-              withCredentials: true
-            },
-            dataType: "json",
-            success: function(data) {
-
-              $.ajax({
-                type: "GET",
-                url: "http://localhost:4000/picture",
-                data: {
-                  lat: lat,
-                  lon: lon
-                },
-                xhrFields: {
-                  withCredentials: true
-                },
-                dataType: "json",
-                success: function(data) {
-                  console.log(data)
-                  element.attr("src", data.url);
-                  $("#pics").html(element);
-                }
-
-              });
-
-            },
-
-            error: function() {
-              console.log("ErrrROAR");
-            }
-
-          });
-
-        });
-
-        // Send lat, lon, and pic info if hangryButton is clicked //////////////
-        $("#hangryButton").click(function() {
-          var $request = $(this)
-          console.log($request.context.name)
-          console.log(obj)
-          $.ajax({
-            type: "POST",
-            url: "http://localhost:4000/reaction",
-            data: {
-              reaction: $request.context.name,
-              pic_obj: obj,
-              lat: lat,
-              lon: lon
-            },
-            xhrFields: {
-              withCredentials: true
-            },
-            dataType: "json",
-            success: function(data) {
-              $.ajax({
-                type: "GET",
-                url: "http://localhost:4000/picture",
-                data: {
-                  lat: lat,
-                  lon: lon
-                },
-                xhrFields: {
-                  withCredentials: true
-                },
-                dataType: "json",
-                success: function(data) {
-                  console.log(data)
-                  element.attr("src", data.url);
-                  $("#pics").html(element);
-
-                }
-              });
-
-            },
-
-            error: function() {
-              console.log("ErrrROAR");
-            }
-
-          });
-
-        });
-
-      },
-
-      error: function() {
-        console.log("ErrrROAR");
-      }
+      success: getPhoto
 
     });
 
-  };
-
-  navigator.geolocation.getCurrentPosition(geoSuccess);
-
+  });
 });
+
+var getPhoto = function() {
+  $.ajax({
+    type: "GET",
+    url: "http://localhost:4000/picture",
+    data: {
+      lat: lat,
+      lon: lon
+    },
+    // tell to send cookies
+    xhrFields: {
+      withCredentials: true
+    },
+    dataType: "json",
+    success: function(data) {
+      console.log(data);
+      var obj = data
+      var element = $("<img />");
+      element.attr("src", obj.url);
+      element.data("id",obj.id)
+      $("#pics").html(element);
+
+    }
+
+  });
+}

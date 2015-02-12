@@ -27,7 +27,9 @@ $( document ).ready(function() {
         withCredentials: true
       },
       dataType: "json",
-      success: getPhoto
+      success: done
+      // getPhoto
+      //  call next_step: call to aip ask if done, if yes return answer if not call getPhoto
 
     });
 
@@ -57,6 +59,31 @@ var getPhoto = function() {
       $("#pics").html(element);
 
     }
+
+  });
+}
+
+
+var done = function() {
+  $.ajax({
+  type: "GET",
+  url: "http://localhost:4000/done",
+  data: {
+    lat: lat,
+    lon: lon
+  },
+  xhrFields: {
+    withCredentials: true
+  },
+  dataType: "json",
+  success: function(data) {
+    console.log(data);
+    var obj = data
+    var element = $("<img />");
+    element.attr("src", obj.url);
+    element.data("id",obj.id)
+    $("#pics").html(element);
+   }
 
   });
 }

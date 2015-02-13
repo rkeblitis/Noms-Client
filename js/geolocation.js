@@ -10,9 +10,9 @@ $( document ).ready(function() {
   }
   navigator.geolocation.getCurrentPosition(geoSuccess);
 
-  $("#picDecision button").click(function() {
+  $("#picDecision i").click(function() {
     var $request = $(this)
-    console.log($request.context.name)
+    console.log($request.context.id)
     $.ajax({
       type: "POST",
       url: "http://localhost:4000/reaction",
@@ -27,7 +27,9 @@ $( document ).ready(function() {
         withCredentials: true
       },
       dataType: "json",
-      success: done
+      success: done()
+
+
       // getPhoto
       //  call next_step: call to aip ask if done, if yes return answer if not call getPhoto
 
@@ -55,6 +57,9 @@ var getPhoto = function() {
       var obj = data
       var element = $("<img />");
       element.attr("src", obj.url);
+      // data() is key, value pair that lets you set distinct values for a single element and retrieve them later
+      // id = key
+      // value = obj.id
       element.data("id",obj.id)
       $("#pics").html(element);
 
@@ -77,13 +82,39 @@ var done = function() {
   },
   dataType: "json",
   success: function(data) {
-    console.log(data);
     var obj = data
-    var element = $("<img />");
-    element.attr("src", obj.url);
-    element.data("id",obj.id)
-    $("#pics").html(element);
-   }
+    if(obj.length === 0) {
+      getPhoto()
+    }
+    else {
+      $.each(obj, function(key, value) {
+        var restaurant = value
+        console.log(restaurant);
+        // $("#picDecision").remove();
+        $("#results").append("<p>" + restaurant + "</p>");
+
+        var element = $("<img/>");
+        element.attr("src", "");
+        $("#pics").html(element);
+
+
+
+
+        // var element = $("<h1 /h1>");
+        // element.attr(value);
+        // $("#results").html(element);
+
+
+        // var element = $("<img/>");
+        // element.attr("src", "../stylesheets/hangry.jpg");
+        // // element.data("id",obj.id)
+        // $("#pics").html(element);
+
+      });
+
+    }
+
+     }
 
   });
 }

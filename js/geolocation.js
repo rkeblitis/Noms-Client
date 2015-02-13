@@ -18,7 +18,7 @@ $( document ).ready(function() {
       url: "http://localhost:4000/reaction",
       // http://54.213.91.66/
       data: {
-        reaction: $request.context.name,
+        reaction: $request.context.id,
         pic_id: $("img").data("id"),
         lat: lat,
         lon: lon

@@ -6,8 +6,13 @@ $( document ).ready(function() {
     lat = position.coords.latitude;
     lon = position.coords.longitude;
     console.log(lat);
-    getPhoto()
+    // $("#loadingPic").click(function() {
+    //   $(this).remove()
+    //  });
+    done()
   }
+
+
   navigator.geolocation.getCurrentPosition(geoSuccess);
 
   $("#picDecision i").click(function() {
@@ -53,10 +58,11 @@ var getPhoto = function() {
     },
     dataType: "json",
     success: function(data) {
-      console.log(data);
       var obj = data
       var element = $("<img />");
+      console.log(obj)
       element.attr("src", obj.url);
+      console.log(obj)
       // data() is key, value pair that lets you set distinct values for a single element and retrieve them later
       // id = key
       // value = obj.id
@@ -70,6 +76,7 @@ var getPhoto = function() {
 
 
 var done = function() {
+  console.log("in done")
   $.ajax({
   type: "GET",
   url: "http://localhost:4000/done",
@@ -82,17 +89,20 @@ var done = function() {
   },
   dataType: "json",
   success: function(data) {
+    console.log("in success")
     var obj = data
     if(obj.length === 0) {
+      console.log(" in if")
       getPhoto()
+      console.log("??")
     }
     else {
+      console.log("in else")
       $.each(obj, function(key, value) {
         var restaurant = value
         console.log(restaurant);
-        // $("#picDecision").remove();
+        $("#picDecision i").remove();
         $("#results").append("<p>" + restaurant + "</p>");
-
         var element = $("<img/>");
         element.attr("src", "");
         $("#pics").html(element);

@@ -1,10 +1,11 @@
 /*Home CSS*/
 #wrapper {
-  text-align: center
+  text-align: center;
 }
 
 
 #hangry {
+  /*font-family: 'Amatic SC', cursive;*/
   font-family: 'Anton';
   color: dimgrey;
   font-size : 3em;
@@ -30,4 +31,9 @@
 .flag {
   color: tomato;
   font-size :1.6em;
+}
+
+#results {
+  color: black;
+  
 }

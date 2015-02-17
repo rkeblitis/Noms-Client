@@ -9,7 +9,7 @@ $( document ).ready(function() {
     // $("#loadingPic").click(function() {
     //   $(this).remove()
     //  });
-    done()
+    getPhoto()
   }
 
 
@@ -20,7 +20,7 @@ $( document ).ready(function() {
     console.log($request.context.id)
     $.ajax({
       type: "POST",
-      url: "http://localhost:4000/reaction",
+      url: "http://54.213.91.66/reaction",
       // http://54.213.91.66/
       data: {
         reaction: $request.context.id,
@@ -43,10 +43,14 @@ $( document ).ready(function() {
   });
 });
 
+  $("#picture").click(function() {
+    console.log("clicked pic")
+  });
+
 var getPhoto = function() {
   $.ajax({
     type: "GET",
-    url: "http://localhost:4000/picture",
+    url: "http://54.213.91.66/picture",
     // http://54.213.91.66/
     data: {
       lat: lat,
@@ -62,6 +66,7 @@ var getPhoto = function() {
       var element = $("<img />");
       console.log(obj)
       element.attr("src", obj.url);
+      element.attr("id", "picture")
       console.log(obj)
       // data() is key, value pair that lets you set distinct values for a single element and retrieve them later
       // id = key
@@ -79,7 +84,7 @@ var done = function() {
   console.log("in done")
   $.ajax({
   type: "GET",
-  url: "http://localhost:4000/done",
+  url: "http://54.213.91.66/done",
   data: {
     lat: lat,
     lon: lon

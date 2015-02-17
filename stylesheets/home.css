@@ -14,26 +14,31 @@
 
 .hang {
   color: tomato;
-  font-size :1.6em;
+  font-size :3em;
 }
 
-.nom {
+#nom {
   color: tomato;
-  font-size :1.6em;
+  font-size :4em;
 }
 
-.meh {
+#meh {
   color: tomato;
   /*float: left;*/
-  font-size :1.6em;
+  font-size :4em;
 }
 
-.flag {
+#flag {
   color: tomato;
-  font-size :1.6em;
+  font-size :4em;
 }
 
 #results {
   color: black;
-  
+  font-size: 2em;
+  text-align: center;
+  margin: 3em;
+  padding: 1em;
+  margin-left: 7em;
+  margin-right: 7em;
 }

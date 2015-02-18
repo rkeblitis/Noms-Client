@@ -13,6 +13,9 @@ $( document ).ready(function() {
   }
 
 
+
+
+
 navigator.geolocation.getCurrentPosition(geoSuccess);
 
 $("#picDecision i").click(function() {
@@ -64,6 +67,17 @@ var getPhoto = function() {
       // value = obj.id
       element.data("id",obj.id)
       $("#pics").html(element);
+
+
+      var options = {
+        preventDefault: true
+      };
+      var hammertime = new Hammer(element, options);
+      hammertime.on('swipeleft swiperight swipedown', function(ev) {
+        console.log(ev);
+      });
+
+
       element.click(function() {
         picInfo(obj, element)
 

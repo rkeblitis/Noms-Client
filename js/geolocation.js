@@ -20,8 +20,8 @@ $( document ).ready(function() {
     console.log($request.context.id)
     $.ajax({
       type: "POST",
-      url: "http://54.213.91.66/reaction",
-      // http://54.213.91.66/
+      // url: "http://54.213.91.66/reaction",
+      url: "http://localhost:4000/reaction",
       data: {
         reaction: $request.context.id,
         pic_id: $("img").data("id"),
@@ -32,7 +32,7 @@ $( document ).ready(function() {
         withCredentials: true
       },
       dataType: "json",
-      success: done()
+      success: results()
 
 
       // getPhoto
@@ -43,15 +43,12 @@ $( document ).ready(function() {
   });
 });
 
-  $("#picture").click(function() {
-    console.log("clicked pic")
-  });
 
 var getPhoto = function() {
   $.ajax({
     type: "GET",
-    url: "http://54.213.91.66/picture",
-    // http://54.213.91.66/
+    // url: "http://54.213.91.66/picture",
+    url: "http://localhost:4000/picture",
     data: {
       lat: lat,
       lon: lon
@@ -66,25 +63,49 @@ var getPhoto = function() {
       var element = $("<img />");
       console.log(obj)
       element.attr("src", obj.url);
-      element.attr("id", "picture")
       console.log(obj)
       // data() is key, value pair that lets you set distinct values for a single element and retrieve them later
       // id = key
       // value = obj.id
       element.data("id",obj.id)
       $("#pics").html(element);
+      // $("#pics").click(function() {
+      //     $.ajax({
+      //       type: "GET",
+      //       url: "http://localhost:4000/info",
+      //       data: {
+      //         lat: lat,
+      //         lon: lon,
+      //         photo: $("img").data("id")
+      //       },
+      //       xhrFields: {
+      //         withCredentials: true
+      //       },
+      //       dataType: "json",
+      //       success: function(data) {
+      //         $("#picDecision i").remove();
+      //         $("#results").append("<p>" + data + "</p>");
+      //         var element = $("<img/>");
+      //         element.attr("src", "");
+      //         $("#pics").html(element);
+      //
+      //       }
+
+          // });
+
+      // });
 
     }
 
   });
 }
 
-
-var done = function() {
-  console.log("in done")
+var results = function() {
+  console.log("in results")
   $.ajax({
   type: "GET",
-  url: "http://54.213.91.66/done",
+  // url: "http://54.213.91.66/done",
+  url: "http://localhost:4000/results",
   data: {
     lat: lat,
     lon: lon

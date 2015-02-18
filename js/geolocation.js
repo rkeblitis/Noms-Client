@@ -13,34 +13,31 @@ $( document ).ready(function() {
   }
 
 
-  navigator.geolocation.getCurrentPosition(geoSuccess);
+navigator.geolocation.getCurrentPosition(geoSuccess);
 
-  $("#picDecision i").click(function() {
-    var $request = $(this)
-    console.log($request.context.id)
-    $.ajax({
-      type: "POST",
-      // url: "http://54.213.91.66/reaction",
-      url: "http://localhost:4000/reaction",
-      data: {
-        reaction: $request.context.id,
-        pic_id: $("img").data("id"),
-        lat: lat,
-        lon: lon
-      },
-      xhrFields: {
-        withCredentials: true
-      },
-      dataType: "json",
-      success: results()
-
-
-      // getPhoto
-      //  call next_step: call to aip ask if done, if yes return answer if not call getPhoto
+$("#picDecision i").click(function() {
+  var $request = $(this)
+  console.log($request.context.id)
+  $.ajax({
+    type: "POST",
+    // url: "http://54.213.91.66/reaction",
+    url: "http://localhost:4000/reaction",
+    data: {
+      reaction: $request.context.id,
+      pic_id: $("img").data("id"),
+      lat: lat,
+      lon: lon
+    },
+    xhrFields: {
+      withCredentials: true
+    },
+    dataType: "json",
+    success: results()
 
     });
 
   });
+
 });
 
 
@@ -61,44 +58,52 @@ var getPhoto = function() {
     success: function(data) {
       var obj = data
       var element = $("<img />");
-      console.log(obj)
       element.attr("src", obj.url);
-      console.log(obj)
       // data() is key, value pair that lets you set distinct values for a single element and retrieve them later
       // id = key
       // value = obj.id
       element.data("id",obj.id)
       $("#pics").html(element);
-      // $("#pics").click(function() {
-      //     $.ajax({
-      //       type: "GET",
-      //       url: "http://localhost:4000/info",
-      //       data: {
-      //         lat: lat,
-      //         lon: lon,
-      //         photo: $("img").data("id")
-      //       },
-      //       xhrFields: {
-      //         withCredentials: true
-      //       },
-      //       dataType: "json",
-      //       success: function(data) {
-      //         $("#picDecision i").remove();
-      //         $("#results").append("<p>" + data + "</p>");
-      //         var element = $("<img/>");
-      //         element.attr("src", "");
-      //         $("#pics").html(element);
-      //
-      //       }
+      element.click(function() {
+        picInfo(obj, element)
 
-          // });
-
-      // });
-
-    }
+      });
+    },
 
   });
 }
+
+var picInfo = function(obj, element) {
+    $.ajax({
+      type: "GET",
+      url: "http://localhost:4000/info",
+      data: {
+        lat: lat,
+        lon: lon,
+        photo_id: obj.id
+      },
+      xhrFields: {
+        withCredentials: true
+      },
+      dataType: "json",
+      success: function(data) {
+        var picInfo = data
+        var infoElement = $("<p> picInfo <p/>");
+        element.hide();
+        $("#results").html(picInfo);
+        $("#results").click(function() {
+          // $("#results").hide();
+          element.show();
+          $("#results").empty();
+
+        });
+
+      }
+
+    });
+
+}
+
 
 var results = function() {
   console.log("in results")
@@ -132,19 +137,6 @@ var results = function() {
         var element = $("<img/>");
         element.attr("src", "");
         $("#pics").html(element);
-
-
-
-
-        // var element = $("<h1 /h1>");
-        // element.attr(value);
-        // $("#results").html(element);
-
-
-        // var element = $("<img/>");
-        // element.attr("src", "../stylesheets/hangry.jpg");
-        // // element.data("id",obj.id)
-        // $("#pics").html(element);
 
       });
 

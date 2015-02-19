@@ -41,8 +41,8 @@ var nextPhoto = function(reaction) {
     console.log(reaction);
     $.ajax({
       type: "POST",
-      // url: "http://54.213.91.66/reaction",
-      url: "http://localhost:4000/reaction",
+      url: "http://54.213.91.66/reaction",
+      // url: "http://localhost:4000/reaction",
       data: {
         reaction: reaction,
         pic_id: $("img").data("id"),
@@ -63,8 +63,8 @@ var nextPhoto = function(reaction) {
 var getPhoto = function() {
   $.ajax({
     type: "GET",
-    // url: "http://54.213.91.66/picture",
-    url: "http://localhost:4000/picture",
+    url: "http://54.213.91.66/picture",
+    // url: "http://localhost:4000/picture",
     data: {
       lat: lat,
       lon: lon
@@ -96,8 +96,8 @@ var getPhoto = function() {
 var picInfo = function(obj, element) {
     $.ajax({
       type: "GET",
-      // url: "http://54.213.91.66/info",
-      url: "http://localhost:4000/info",
+      url: "http://54.213.91.66/info",
+      // url: "http://localhost:4000/info",
       data: {
         lat: lat,
         lon: lon,
@@ -126,8 +126,8 @@ var results = function() {
   console.log("in results")
   $.ajax({
     type: "GET",
-    // url: "http://54.213.91.66/results",
-    url: "http://localhost:4000/results",
+    url: "http://54.213.91.66/results",
+    // url: "http://localhost:4000/results",
     data: {
       lat: lat,
       lon: lon

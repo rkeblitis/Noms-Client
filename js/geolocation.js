@@ -4,8 +4,20 @@ var lon;
 
 $( document ).ready(function() {
   navigator.geolocation.getCurrentPosition(geoSuccess);
+
   $("#pics").on("swipeleft", function() {
+    console.log("left");
     nextPhoto("meh")
+  });
+
+  $("#pics").on("swiperight", function() {
+    console.log("right");
+    nextPhoto("nom")
+  });
+
+  $("pics").on('swipedown', function () {
+    console.log("down");
+    nextPhoto("flag")
   });
 
   $("#picDecision i").click(function() {
@@ -26,7 +38,7 @@ var geoSuccess = function(position) {
 
 
 var nextPhoto = function(reaction) {
-    console.log(reaction)
+    console.log(reaction);
     $.ajax({
       type: "POST",
       // url: "http://54.213.91.66/reaction",
@@ -126,6 +138,7 @@ var results = function() {
     dataType: "json",
     success: function(data) {
       console.log("in success")
+      console.log(data)
       var obj = data
       if(obj.length === 0) {
         console.log(" in if")

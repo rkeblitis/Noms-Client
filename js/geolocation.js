@@ -34,12 +34,14 @@ var geoSuccess = function(position) {
   // $("#loadingPic").click(function() {
   //   $(this).remove()
   //  });
-  getPhoto()
+  getPhoto(3)
+
 }
 
 
 var nextPhoto = function(reaction) {
     console.log(reaction);
+
     $.ajax({
       type: "POST",
       // url: "http://54.213.91.66/reaction",
@@ -61,14 +63,15 @@ var nextPhoto = function(reaction) {
   }
 
 
-var getPhoto = function() {
+var getPhoto = function(number) {
   $.ajax({
     type: "GET",
     // url: "http://54.213.91.66/picture",
     url: "http://localhost:4000/picture",
     data: {
       lat: lat,
-      lon: lon
+      lon: lon,
+      number: number
     },
     // tell to send cookies
     xhrFields: {
@@ -76,19 +79,25 @@ var getPhoto = function() {
     },
     dataType: "json",
     success: function(data) {
+      // remove element with loading gif
       var obj = data
-      var element = $("<img />");
-      element.attr("src", obj.url);
-      // data() is key, value pair that lets you set distinct values for a single element and retrieve them later
-      // id = key
-      // value = obj.id
-      element.data("id",obj.id)
-      $("#pics").html(element);
+      console.log(obj)
+      $.each(obj, function(key, value) {
+        var element = $("<img />");
+        element.attr("src", value.url);
+        // data() is key, value pair that lets you set distinct values for a single element and retrieve them later
+        // id = key
+        // value = obj.id
+        element.data("id",value.id)
+        $("#pics").append(element);
 
-      element.click(function() {
-        picInfo(obj, element)
+        element.click(function() {
+          picInfo(value, element)
+
+        });
 
       });
+
     }
 
   });
@@ -125,6 +134,7 @@ var picInfo = function(obj, element) {
 
 
 var results = function() {
+
   console.log("in results")
   $.ajax({
     type: "GET",
@@ -144,8 +154,9 @@ var results = function() {
       var obj = data
       // if an empty array is returned in the response:
       if(obj.length === 0) {
+        $("#pics img:first-child").remove()
         console.log(" in if")
-        getPhoto()
+        getPhoto(1)
         console.log("??")
       }
       else {

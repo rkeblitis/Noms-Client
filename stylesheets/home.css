@@ -3,6 +3,15 @@
   text-align: center;
 }
 
+#pics img {
+  display: none;
+  padding-top: 2em;
+}
+
+#pics img:first-child {
+  display: inline-block;
+}
+
 .text {
   color: black;
   font-size: 2em;
@@ -12,9 +21,17 @@
   padding: 0;
   width: 25%;
   margin: auto;
-  padding-top: 2.5%;
-  padding-bottom: 2.5%;
+  /*padding-top: 2.5%;*/
+  padding-bottom: 1em;
 }
+
+/*#info {
+  padding: 2em;
+}
+
+#results {
+  padding: 0;
+}*/
 
 #hangry {
   /*font-family: 'Amatic SC', cursive;*/
@@ -69,31 +86,28 @@
     padding-bottom: 2.5%;
   }
 
-  /*#info {
-    font-size: 1.5em;
-    text-align: center;
-    margin: 1em;
+  #info {
     padding: 0;
-    width: 0;
-    margin: auto;
-    padding-top: 2.5%;
-    padding-bottom: 2.5%;
-  }*/
+  }
+
+  #results {
+    padding: 0;
+  }
   #hangry {
-    padding-bottom: 5%;
+    padding-bottom: 0;
     padding-top: 5%;
   }
 
   #nom {
-    padding-top: 15%;
+    padding-top: 7%;
   }
 
   #meh {
-    padding-top: 15%;
+    padding-top: 7%;
   }
 
   #flag {
-    padding-top: 15%;
+    padding-top: 7%;
   }
 
   #wrapper {

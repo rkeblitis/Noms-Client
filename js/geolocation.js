@@ -152,10 +152,12 @@ var results = function() {
           var restaurant = value
           console.log(restaurant);
           $("#picDecision i").remove();
-          $("#results").append("<p>" + restaurant + "</p>");
-          var element = $("<img/>");
-          element.attr("src", "");
-          $("#pics").html(element);
+          $("#pics").hide()
+          // $("#results").append("<p>" + restaurant + "</p>");
+          $("#results").append(restaurant);
+          // var element = $("<img/>");
+          // element.attr("src", "");
+          // $("#pics").html(element);
           var restart = $("<button> Restart! </button>")
           restart.attr("class","btn btn-default")
           $("#restartSession").html(restart)

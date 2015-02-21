@@ -3,10 +3,18 @@
   text-align: center;
 }
 
-
-/*#restart{
-    display: none;
-}*/
+#results {
+  color: black;
+  font-size: 2em;
+  text-align: center;
+  margin: 3em;
+  padding: 1em;
+  padding: 0;
+  width: 25%;
+  margin: auto;
+  padding-top: 2.5%;
+  padding-bottom: 2.5%;
+}
 
 #hangry {
   /*font-family: 'Amatic SC', cursive;*/
@@ -44,22 +52,33 @@
   font-size :4em;
 }
 
-#results {
-  color: black;
-  font-size: 2em;
-  text-align: center;
-  margin: 3em;
-  padding: 1em;
-  margin-left: 7em;
-  margin-right: 7em;
-}
-
 @media (max-width: 768px) {
   #pics img {
     width: 100%;
     margin: 0;
   }
 
+  #results {
+    font-size: 1.5em;
+    text-align: center;
+    margin: 1em;
+    padding: 0;
+    width: 15em;
+    margin: auto;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+  }
+
+  #info {
+    font-size: 1.5em;
+    text-align: center;
+    margin: 1em;
+    padding: 0;
+    width: 0;
+    margin: auto;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+  }
   #hangry {
     padding-bottom: 5%;
     padding-top: 5%;

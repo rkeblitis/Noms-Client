@@ -22,6 +22,7 @@ $( document ).ready(function() {
 
   $("#picDecision i").click(function() {
     var $request = $(this)
+    console.log($request)
     nextPhoto($request.context.id)
   });
 });
@@ -155,6 +156,10 @@ var results = function() {
           var element = $("<img/>");
           element.attr("src", "");
           $("#pics").html(element);
+          var restart = $("<button> Restart! </button>")
+          restart.attr("class","btn btn-default")
+          $("#restartSession").html(restart)
+
         });
 
       }

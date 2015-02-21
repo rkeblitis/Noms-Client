@@ -4,11 +4,16 @@
 }
 
 
+/*#restart{
+    display: none;
+}*/
+
 #hangry {
   /*font-family: 'Amatic SC', cursive;*/
   font-family: 'Anton';
   color: dimgrey;
-  font-size : 3em;
+  font-size : 3.75em;
+  /*padding-bottom: 3%;*/
   /*text-transform: none;*/
 }
 
@@ -18,18 +23,24 @@
 }
 
 #nom {
-  color: tomato;
+  width: 100px;
+  height: 100px;
   font-size :4em;
+  color: tomato;
 }
 
 #meh {
+  width: 100px;
+  height: 100px;
   color: tomato;
   /*float: left;*/
   font-size :4em;
 }
 
 #flag {
-  color: tomato;
+  color: dimgrey;
+  width: 100px;
+  height: 100px;
   font-size :4em;
 }
 
@@ -41,4 +52,32 @@
   padding: 1em;
   margin-left: 7em;
   margin-right: 7em;
+}
+
+@media (max-width: 768px) {
+  #pics img {
+    width: 100%;
+    margin: 0;
+  }
+
+  #hangry {
+    padding-bottom: 5%;
+    padding-top: 5%;
+  }
+
+  #nom {
+    padding-top: 15%;
+  }
+
+  #meh {
+    padding-top: 15%;
+  }
+
+  #flag {
+    padding-top: 15%;
+  }
+
+  #wrapper {
+    padding: 0;
+  }
 }

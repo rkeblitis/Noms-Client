@@ -3,7 +3,7 @@
   text-align: center;
 }
 
-#results {
+.text {
   color: black;
   font-size: 2em;
   text-align: center;
@@ -58,7 +58,7 @@
     margin: 0;
   }
 
-  #results {
+  .text {
     font-size: 1.5em;
     text-align: center;
     margin: 1em;
@@ -69,7 +69,7 @@
     padding-bottom: 2.5%;
   }
 
-  #info {
+  /*#info {
     font-size: 1.5em;
     text-align: center;
     margin: 1em;
@@ -78,7 +78,7 @@
     margin: auto;
     padding-top: 2.5%;
     padding-bottom: 2.5%;
-  }
+  }*/
   #hangry {
     padding-bottom: 5%;
     padding-top: 5%;

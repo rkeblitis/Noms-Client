@@ -113,11 +113,11 @@ var picInfo = function(obj, element) {
         // var infoElement = $("<h2> picInfo.name <h2/>");
         element.hide();
         var results = picInfo.name + " " + picInfo.category + " " + picInfo.address + " " + picInfo.phone_number
-        $("#results").html(results);
-        $("#results").click(function() {
+        $("#info").html(results);
+        $("#info").click(function() {
           // $("#results").hide();
           element.show();
-          $("#results").empty();
+          $("#info").empty();
         });
       }
     });

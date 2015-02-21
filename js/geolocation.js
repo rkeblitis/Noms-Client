@@ -121,7 +121,7 @@ var picInfo = function(obj, element) {
         var picInfo = data
         // var infoElement = $("<h2> picInfo.name <h2/>");
         element.hide();
-        var results = picInfo.name + " " + picInfo.category + " " + picInfo.address + " " + picInfo.phone_number
+        var results = picInfo.name + " " + picInfo.address + " " + picInfo.phone_number
         $("#info").html(results);
         $("#info").click(function() {
           // $("#results").hide();

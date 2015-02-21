@@ -110,9 +110,12 @@ var picInfo = function(obj, element) {
       dataType: "json",
       success: function(data) {
         var picInfo = data
-        var infoElement = $("<p> picInfo <p/>");
+        // var infoElement = $("<h2> picInfo.name <h2/>");
         element.hide();
-        $("#results").html(picInfo);
+        $("#results").html(picInfo.name);
+        $("#results").html(picInfo.category);
+        $("#results").html(picInfo.address);
+        $("#results").html(picInfo.phone_number);
         $("#results").click(function() {
           // $("#results").hide();
           element.show();
@@ -141,6 +144,7 @@ var results = function() {
       console.log("in success")
       console.log(data)
       var obj = data
+      // if an empty array is returned in the response:
       if(obj.length === 0) {
         console.log(" in if")
         getPhoto()

@@ -121,7 +121,7 @@ var picInfo = function(obj, element) {
         var picInfo = data
         // var infoElement = $("<h2> picInfo.name <h2/>");
         element.hide();
-        var results = picInfo.name + " " + picInfo.address + " " + picInfo.phone_number
+        var results = picInfo.name + " " + picInfo.category + " " + picInfo.address + " " + picInfo.phone_number
         $("#info").html(results);
         $("#info").click(function() {
           // $("#results").hide();
@@ -162,18 +162,17 @@ var results = function() {
       else {
         console.log("in else")
         $.each(obj, function(key, value) {
-          var restaurant = value
-          console.log(restaurant);
+          // var results_hash = value
+          var results = value.name + " " + value.category + " " + value.address + " " + value.phone_number + " "
+          console.log(results);
           $("#picDecision i").remove();
-          $("#pics").hide()
-          // $("#results").append("<p>" + restaurant + "</p>");
-          $("#results").append(restaurant);
-          // var element = $("<img/>");
-          // element.attr("src", "");
-          // $("#pics").html(element);
-          var restart = $("<button> Restart! </button>")
-          restart.attr("class","btn btn-default")
-          $("#restartSession").html(restart)
+          $("#pics").hide();
+          $("#results").append(results);
+
+
+          // var restart = $("<button> Restart! </button>")
+          // restart.attr("class","btn btn-default")
+          // $("#restartSession").html(restart)
 
         });
 

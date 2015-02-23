@@ -2,6 +2,7 @@
 var lat;
 var lon;
 $( document ).ready(function() {
+
   navigator.geolocation.getCurrentPosition(geoSuccess);
 
   $("#pics").on("swipeleft", function() {
@@ -90,6 +91,7 @@ var getPhoto = function(number) {
         $("#pics").append(element);
 
         element.click(function() {
+          $("#info").show()
           picInfo(value, element)
 
         });
@@ -116,14 +118,14 @@ var picInfo = function(obj, element) {
       },
       dataType: "json",
       success: function(data) {
-        var picInfo = data
-        // var infoElement = $("<h2> picInfo.name <h2/>");
+        // hides pics div:
         element.hide();
-        var results = picInfo.name + " " + picInfo.category + " " + picInfo.address + " " + picInfo.phone_number
+        var results = data.name + " \n" + data.category + " \n" + data.address + " \n" + data.phone_number
         $("#info").html(results);
         $("#info").click(function() {
           // $("#results").hide();
           element.show();
+          $("#info").hide()
           $("#info").empty();
         });
       }
@@ -160,12 +162,14 @@ var results = function() {
       else {
         console.log("in else")
         $.each(obj, function(key, value) {
-          // var results_hash = value
-          var results = value.name + " " + value.category + " " + value.address + " " + value.phone_number + " "
-          console.log(results);
-          $("#picDecision i").remove();
+          $("#picDecision i").hide();
           $("#pics").hide();
-          $("#results").append(results);
+          var result_info = value.name + " \n" + value.category + " \n" + value.address + " \n" + value.phone_number + " \n"
+          console.log(result_info);
+          $("#results").empty()
+          // $("resutls").append("No need to panic, you're results are in...")
+          $("#results").html(result_info);
+          $("#results").show()
 
 
           // var restart = $("<button> Restart! </button>")

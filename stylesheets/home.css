@@ -3,29 +3,18 @@
 .container-fluid {
   text-align: center;
   display: none;
+  padding: 0;
 }
 
 #pics img {
   display: none;
   padding-top: 2em;
+  padding-bottom: 2em;
 }
 
 #pics img:first-child {
   display: inline-block;
 }
-
-.text {
-  color: black;
-  font-size: 2em;
-  text-align: center;
-  margin: 3em;
-  padding: 1em;
-  padding: 0;
-  width: 25%;
-  margin: auto;
-  padding-bottom: 1em;
-}
-
 
 
 #hangry {
@@ -62,6 +51,25 @@
   font-size :3em;
 }
 
+.text {
+  color: #404040;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2em;
+  text-align: center;
+  margin: 3em;
+  padding: 1em;
+  padding: 0;
+  width: 25%;
+  margin: auto;
+  padding-bottom: 5em;
+  padding-top: 5em;
+  display:none;
+}
+
+/*#info {
+  border-top: 1px solid #000;
+}*/
+
 @media (max-width: 768px) {
   #pics img {
     width: 100%;
@@ -80,12 +88,18 @@
   }
 
   #info {
-    padding: 0;
+    padding-bottom: 7em;
+    padding-top: 7em;
+    color: 404040;
   }
 
   #results {
-    padding: 0;
+    padding-bottom: 7em;
+    padding-top: 7em;
+    color: 404040;
   }
+
+
   #hangry {
     padding-bottom: 0;
     padding-top: 5%;

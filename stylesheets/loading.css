@@ -584,7 +584,7 @@ a:active {
 
 @media (max-width: 768px) {
   #loadingText {
-    padding-top: 3em;
+    padding-top: 2em;
   }
 
 }

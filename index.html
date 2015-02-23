@@ -8,12 +8,14 @@
   <script src="../js/geolocation.js"></script>
   <link rel=StyleSheet href="../stylesheets/bootstrap.min.css">
   <link rel=StyleSheet href="../stylesheets/home.css">
+  <link rel=StyleSheet href="../stylesheets/loading.css">
   <link href='http://fonts.googleapis.com/css?family=Anton' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 </head>
-<div id="wrapper" class="container-fluid">
+<div  class="container-fluid">
   <h1 id = "hangry">Hangry <i class="fa fa-cutlery hang"></i> Noms</h1>
+
   <div id="pics">
 
   </div>
@@ -28,24 +30,25 @@
 
   <div id="picDecision">
 
-
-
     <!-- <i id="meh" class="fa fa-arrow-left meh"></i>
     <i id="flag" class="fa fa-arrow-down flag"></i>
     <i id="nom" class="fa fa-arrow-right nom" ></i> -->
 
-    <i id="meh" class="fa fa-times-circle meh"></i>
+    <i id="meh"  class="fa fa-times-circle meh"></i>
     <i id="flag" class="fa fa-flag flag"></i>
-    <i id="nom" class="fa fa-gratipay" nom"></i>
+    <i id="nom"  class="fa fa-gratipay" "nom"></i>
 
 
   </div>
+</div>
 
+<div id="loading">
 
-
-  <!-- </div id="restartSession">
-  <button id="restart">Restart!</button>
-</div> -->
+  <h1 id="loadingText">LOADING...</h1>
+  <div class="loading animate">
+    <div class="bar"></div>
+  </div>
+ </div>
 
 </body>
 </html>

@@ -1,6 +1,8 @@
 /*Home CSS*/
+
 .container-fluid {
   text-align: center;
+  display: none;
 }
 
 #pics img {
@@ -21,20 +23,12 @@
   padding: 0;
   width: 25%;
   margin: auto;
-  /*padding-top: 2.5%;*/
   padding-bottom: 1em;
 }
 
-/*#info {
-  padding: 2em;
-}
 
-#results {
-  padding: 0;
-}*/
 
 #hangry {
-  /*font-family: 'Amatic SC', cursive;*/
   font-family: 'Anton';
   color: dimgrey;
   font-size : 3.75em;
@@ -58,7 +52,6 @@
   width: 100px;
   height: 100px;
   color: tomato;
-  /*float: left;*/
   font-size :4em;
 }
 
@@ -113,4 +106,5 @@
   #wrapper {
     padding: 0;
   }
+
 }

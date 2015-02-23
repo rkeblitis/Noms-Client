@@ -1,7 +1,6 @@
 //Get User Location
 var lat;
 var lon;
-
 $( document ).ready(function() {
   navigator.geolocation.getCurrentPosition(geoSuccess);
 
@@ -31,9 +30,6 @@ var geoSuccess = function(position) {
   lat = position.coords.latitude;
   lon = position.coords.longitude;
   console.log(lat);
-  // $("#loadingPic").click(function() {
-  //   $(this).remove()
-  //  });
   getPhoto(3)
 
 }
@@ -80,6 +76,8 @@ var getPhoto = function(number) {
     dataType: "json",
     success: function(data) {
       // remove element with loading gif
+      $("#loading").remove()
+      $(".container-fluid").show()
       var obj = data
       console.log(obj)
       $.each(obj, function(key, value) {

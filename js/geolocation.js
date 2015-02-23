@@ -120,13 +120,14 @@ var picInfo = function(obj, element) {
       success: function(data) {
         // hides pics div:
         element.hide();
-        var results = data.name + " \n" + data.category + " \n" + data.address + " \n" + data.phone_number
-        $("#info").html(results);
+        var result = data.name + "<br />"  + data.category + "<br />"  + data.address + "<br />"  + data.phone_number
+        $("#info").html(result);
         $("#info").click(function() {
           // $("#results").hide();
+          $("#info").empty();
           element.show();
           $("#info").hide()
-          $("#info").empty();
+
         });
       }
     });
@@ -160,15 +161,20 @@ var results = function() {
         console.log("??")
       }
       else {
-        console.log("in else")
+        console.log("in else");
+        var message_element = $("<h2 />");
+        var mes = message_element.append("Hangry no more...")
+        var result_div = $("<h3 />")
+        $("#results").empty();
+        $("#picDecision i").hide();
+        $("#hangry").hide()
+        $("#pics").hide();
+        $("#results").prepend(mes)
         $.each(obj, function(key, value) {
-          $("#picDecision i").hide();
-          $("#pics").hide();
-          var result_info = value.name + " \n" + value.category + " \n" + value.address + " \n" + value.phone_number + " \n"
+          var result_info = value.name + "<br />" + value.category + "<br />"  + value.address + "<br />"  + value.phone_number + "<br />" + "<br />"  + "<hr />"
           console.log(result_info);
-          $("#results").empty()
-          // $("resutls").append("No need to panic, you're results are in...")
-          $("#results").html(result_info);
+          result_div.append(result_info);
+          $("#results").append(result_div)
           $("#results").show()
 
 

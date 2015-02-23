@@ -66,9 +66,14 @@
   display:none;
 }
 
-/*#info {
-  border-top: 1px solid #000;
-}*/
+#results {
+  padding-top: 0.5em;
+}
+
+.text h2{
+  color: tomato;
+  font-size: 2em;
+}
 
 @media (max-width: 768px) {
   #pics img {
@@ -95,7 +100,7 @@
 
   #results {
     padding-bottom: 7em;
-    padding-top: 7em;
+    /*padding-top: 1em;*/
     color: 404040;
   }
 
